@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "lib": [ "ESNext" ],
+    "sourceMap": true,
+    "target": "ES2019",
+    "module": "es2020",
+    "strict": true
+  }
+}
