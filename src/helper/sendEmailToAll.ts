@@ -48,6 +48,7 @@ function sendEmailToAll(
     };
 
     GmailApp.sendEmail(address, subject, body, options);
+    appUi.alert("📤 Sent email", "It's done!", appUi.ButtonSet.OK);
   } else {
     appUi.alert(
       "🚨 The sheet name may be incorrect. It should be Email Content."

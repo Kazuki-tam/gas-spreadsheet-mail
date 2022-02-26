@@ -5,7 +5,7 @@ module.exports = {
   mode: "development",
   entry: {
     sendEmail: "./src/main.ts",
-    // testMail: "./src/testMail.ts",
+    testEmail: "./src/testEmail.ts",
   },
   devtool: false,
   output: {

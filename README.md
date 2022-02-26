@@ -58,7 +58,13 @@ yarn deploy
 
 ## Available Commands
 
-Build project files and force writes all local files to script.google.com.
+Build your project.
+
+```shell
+yarn build
+```
+
+Build your project files and force writes all local files to script.google.com.
 
 ```shell
 yarn deploy

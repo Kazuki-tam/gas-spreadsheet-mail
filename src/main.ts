@@ -15,14 +15,32 @@ function main(): GoogleAppsScript.Base.Button | undefined {
     "Are you sure to send email？👀",
     Browser.Buttons.YES_NO
   );
-  // Index the column and row positions
+  // Index the first row position
   const firstRow = 3;
-  const companyCol = 2;
-  const departmentCol = 3;
-  const picCol = 4;
-  const mailCol = 5;
   // Confirm if it is ok to send emails.
   if (sheet && response == "yes") {
+    // Index column positions
+    let companyCol = 2;
+    let departmentCol = 3;
+    let picCol = 4;
+    let mailCol = 5;
+    const colLength = sheet.getLastColumn();
+    for (let i = 1; i <= colLength; i++) {
+      const itemName = sheet.getRange(firstRow - 1, i).getValue();
+      if (itemName === "Company") {
+        companyCol = i;
+      }
+      if (itemName === "Department") {
+        departmentCol = i;
+      }
+      if (itemName === "Person in charge") {
+        picCol = i;
+      }
+      if (itemName === "Email address") {
+        mailCol = i;
+      }
+    }
+
     // Get the number from the start line to the last line
     const rowLength = sheet.getLastRow() - (firstRow - 1);
     const mailList = [];
