@@ -48,5 +48,8 @@
     "format": "prettier --write --plugin-search-dir=. 'src/**/*.ts'",
     "lint": "npm-run-all eslint",
     "lint:fix": "npm-run-all eslint:fix format"
+  },
+  "resolutions": {
+    "glob-parent": "^5.1.2"
   }
 }
