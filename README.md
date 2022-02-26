@@ -2,6 +2,21 @@
 
 This starter kit makes sending e-mails at once easier with Google sheets.
 
+## Status
+
+[![Release (latest by date)](https://img.shields.io/github/v/release/Kazuki-tam/gas-spreadsheet-mail)](https://github.com/Kazuki-tam/gas-spreadsheet-mail/releases/tag/v0.0.1)
+[![Issues](https://img.shields.io/github/issues/Kazuki-tam/gas-spreadsheet-mail)](https://github.com/Kazuki-tam/gas-spreadsheet-mail/issues)
+![Maintenance](https://img.shields.io/maintenance/yes/2022)
+![Release date](https://img.shields.io/github/release-date/Kazuki-tam/gas-spreadsheet-mail)
+
+## Features
+- Just deploy this project code without development 
+- Develop Locally with TypeScript and Clasp
+- Bundle your files with Webpack
+- Lint your code with ESLint
+- Format your code with prettier
+- Built-in test runner with Jest
+
 ## Main dependencies
 
 - [Google Sheets](https://www.google.com/intl/en/sheets/about/)
@@ -85,3 +100,7 @@ yarn test
 ```shell
 yarn test:watch
 ```
+
+## Notes
+You need to pay attention to Gmail sending limits when you use Google Apps Script to send emails.
+https://support.google.com/a/answer/166852?hl=en
