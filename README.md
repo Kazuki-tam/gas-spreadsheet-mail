@@ -1,76 +1,81 @@
-# GAS + TypeScript の開発環境
+# gas-spreadsheet-mail
 
-- GAS
-- TypeScript
-- ESlint
-- Jest
+This starter kit makes sending e-mails at once easier with Google sheets.
 
-ライブラリ
-https://github.com/google/clasp
+## Main dependencies
 
-## インストール
+- [Google Sheets](https://www.google.com/intl/en/sheets/about/)
+- [Google Apps Script](https://workspace.google.co.jp/intl/ja/products/apps-script/)
+- [Clasp](https://github.com/google/clasp)
+- [Webpack](https://webpack.js.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [ESLint](https://eslint.org/)
+- [Jest](https://jestjs.io/)
+- [Yarn](https://yarnpkg.com/)
 
-インストールしない場合は、npx を使用してください
+## Prerequisites
 
-```
+- [Node.js v16+ (v16.13.0)](https://nodejs.org/en/)
+- [Clasp](https://github.com/google/clasp)
+
+Install [Clasp](https://github.com/google/clasp) at the first if you haven't done it yet.
+
+```shell
 npm install -g @google/clasp
 ```
 
-## Google アカウントにログイン
+### Login google account
 
-```
+```shell
 npx clasp login
 ```
 
-## GAS プロジェクトを新規作成
+## How to use
 
-```
-npx clasp create --title "Hello World" --type standalone
-```
+Clone this repository and install dependencies.
 
-## GAS プロジェクトをクローンする
-
-```
-npx clasp clone スクリプトID(GAS のプロジェクトの設定からコピペ)
+```shell
+yarn install
 ```
 
-## 初期設定
+### Connect to your exiting project
 
-1 拡張子を ts に
+Create a `.clasp.json` at the root, and then Add these settings.
+Open App script from your spreadsheet and check out a script Id at the setting page.
 
-2 アップするファイルは src 配下に移動
-
-```
-src/appsscript.json
-src/コード.ts
-```
-
-3.clasp.json に追記
-
-```
+```json
 {
-  // 追加
+  "scriptId": "<SCRIPT_ID>",
   "rootDir": "./src"
 }
 ```
 
-## デプロイ
+Deploy your code to the exiting project.
 
-```
-npx clasp push
-```
-
-## ブラウザ立ち上げ
-
-```
-npx clasp open
+```shell
+yarn deploy
 ```
 
-スクリプト ID はプロジェクト担当者に確認してください。
+## Available Commands
 
+Build project files and force writes all local files to script.google.com.
+
+```shell
+yarn deploy
 ```
-{
-  "scriptId": "xxxxxxxxxxxxxxxxxxxx",
-  "rootDir": "./src"
-}
+
+Open the current directory's clasp project on script.google.com.
+
+```shell
+yarn open
+```
+
+Test project's code
+
+```shell
+yarn test
+```
+
+```shell
+yarn test:watch
 ```

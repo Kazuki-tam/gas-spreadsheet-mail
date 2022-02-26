@@ -1,28 +1,33 @@
-import { sendMailToAll } from "./helper/sendMailToAll";
+import { sendEmailToAll } from "./helper/sendEmailToAll";
+import { validateEmail } from "./utility/validateEmail";
+import { checkDuplicate } from "./utility/checkDuplicate";
 
-function main() {
+/**
+ * main function to send email
+ * Note: Please call this function from Google sheets.
+ */
+function main(): GoogleAppsScript.Base.Button | undefined {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = ss.getSheetByName("既存顧客");
+  const sheet = ss.getSheetByName("Send List");
   const appUi = SpreadsheetApp.getUi();
   const response = Browser.msgBox(
-    "送信確認",
-    "本当に送信していいですか？👀",
+    "Confirmation",
+    "Are you sure to send email？👀",
     Browser.Buttons.YES_NO
   );
-  // 処理開始行
+  // Index the column and row positions
   const firstRow = 3;
-  // 会社名記載列
   const companyCol = 2;
-  // 部署名記載列
   const departmentCol = 3;
-  // 担当者名記載列
   const picCol = 4;
-  // メースアドレス記載列
   const mailCol = 5;
+  // Confirm if it is ok to send emails.
   if (sheet && response == "yes") {
-    // 処理開始行から最終行までの数を取得
+    // Get the number from the start line to the last line
     const rowLength = sheet.getLastRow() - (firstRow - 1);
     const mailList = [];
+    const addressList = [];
+    const invalidList = [];
     for (let i = 0; i < rowLength; i++) {
       const company = sheet.getRange(firstRow + i, companyCol).getValue();
       const department = sheet.getRange(firstRow + i, departmentCol).getValue();
@@ -34,24 +39,39 @@ function main() {
         pic: pic,
         address: address,
       };
-      mailList.push(customer);
+      if (validateEmail(address)) {
+        mailList.push(customer);
+        addressList.push(address);
+      } else if (address !== "" && !validateEmail(address)) {
+        invalidList.push(address);
+      }
     }
 
-    // 宛先ごとにメール作成、送信
+    // Alert invalid email address
+    if (invalidList.length > 0) {
+      return appUi.alert(`🚨 Invalid email address: ${invalidList.join(", ")}`);
+    }
+
+    // Alert duplicate email address
+    const duplicateList = checkDuplicate(addressList);
+    if (duplicateList.length > 0) {
+      return appUi.alert(
+        `🚨 Duplicate email address: ${duplicateList.join(", ")}`
+      );
+    }
+
+    // Create and send emails for each recipient
     mailList.forEach((item) => {
-      // メールアドレスがある場合、実行
       if (item.address != "") {
-        sendMailToAll(item.address, item.company, item.department, item.pic);
+        sendEmailToAll(item.address, item.company, item.department, item.pic);
       }
     });
   } else if (response == "no") {
-    appUi.alert("送信がキャンセルされました!");
+    appUi.alert("Send canceled!");
   } else {
-    appUi.alert(
-      "エラーが発生しました🚧 シート名が間違っているかもしれません。"
-    );
+    appUi.alert("🚨 The sheet name may be incorrect. It should be Send List.");
   }
 }
 
-// 関数名公開で利用
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 (global as any).main = main;
