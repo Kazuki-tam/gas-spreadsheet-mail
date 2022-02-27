@@ -1,6 +1,6 @@
 # gas-spreadsheet-mail
 
-This starter kit makes sending e-mails at once easier with Google sheets.
+This starter kit makes sending emails at once easier with Google sheets.
 
 ## Status
 
@@ -65,7 +65,7 @@ Open App script from your spreadsheet and check out a script Id at the setting p
 }
 ```
 
-Deploy your code to the exiting project.
+Deploy your code to the existing project.
 
 ```shell
 yarn deploy
