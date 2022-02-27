@@ -8,7 +8,7 @@ import { checkDuplicate } from "./utility/checkDuplicate";
  */
 function main(): GoogleAppsScript.Base.Button | undefined {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = ss.getSheetByName("Send List");
+  const sheet = ss.getSheetByName("Email List");
   const appUi = SpreadsheetApp.getUi();
   const response = Browser.msgBox(
     "Confirmation",
@@ -87,7 +87,7 @@ function main(): GoogleAppsScript.Base.Button | undefined {
   } else if (response == "no") {
     appUi.alert("Send canceled!");
   } else {
-    appUi.alert("🚨 The sheet name may be incorrect. It should be Send List.");
+    appUi.alert("🚨 The sheet name may be incorrect. It should be Email List.");
   }
 }
 
