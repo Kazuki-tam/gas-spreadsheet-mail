@@ -1,8 +1,10 @@
 const path = require("path");
 const GasPlugin = require("gas-webpack-plugin");
 
+const isDevelopment = process.env.NODE_ENV !== 'production';
+
 module.exports = {
-  mode: "development",
+  mode: isDevelopment ? "development" : "production",
   entry: {
     sendEmail: "./src/main.ts",
     testEmail: "./src/testEmail.ts",
