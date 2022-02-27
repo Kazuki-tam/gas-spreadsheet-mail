@@ -2,6 +2,8 @@
 
 This starter kit makes sending emails at once easier with Google sheets.
 
+[How to send emails to multiple addresses at once from Google Sheets](https://dev.to/tim_yone/how-to-send-emails-to-multiple-addresses-at-once-from-google-sheets-51jl)
+
 ## Status
 
 [![Release (latest by date)](https://img.shields.io/github/v/release/Kazuki-tam/gas-spreadsheet-mail)](https://github.com/Kazuki-tam/gas-spreadsheet-mail/releases/tag/v0.0.1)
