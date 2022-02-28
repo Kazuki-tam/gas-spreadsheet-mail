@@ -31,7 +31,10 @@ function sendEmailToAll(
         bccItem = itemContent;
       }
       if (itemName === "Subject") {
-        subject = itemContent;
+        subject = itemContent
+          .replace("{COMPANY}", company)
+          .replace("{DEPARTMENT}", department)
+          .replace("{PIC}", pic);
       }
       if (itemName === "Body") {
         body = itemContent
