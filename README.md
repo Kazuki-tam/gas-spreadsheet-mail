@@ -106,3 +106,6 @@ yarn test:watch
 ## Notes
 You need to pay attention to Gmail sending limits when you use Google Apps Script to send emails.
 https://support.google.com/a/answer/166852?hl=en
+
+## License
+MIT
