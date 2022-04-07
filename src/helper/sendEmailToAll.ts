@@ -1,3 +1,5 @@
+import { getUserName } from "./getUserName";
+
 /**
  * Helper function to send email
  */
@@ -10,6 +12,7 @@ function sendEmailToAll(
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const sheet = ss.getSheetByName("Email Content");
   const appUi = SpreadsheetApp.getUi();
+  const { fullName, familyName, givenName } = getUserName();
   // Index the column and row positions
   const itemCol = 1;
   const firstRow = 2;
@@ -37,7 +40,10 @@ function sendEmailToAll(
         body = itemContent
           .replace("{COMPANY}", company)
           .replace("{DEPARTMENT}", department)
-          .replace("{PIC}", pic);
+          .replace("{PIC}", pic)
+          .replace("{MY_FULL_NAME}", fullName)
+          .replace("{MY_FAMILY_NAME}", familyName)
+          .replace("{MY_LAST_NAME}", givenName);
       }
     }
 
