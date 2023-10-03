@@ -8,7 +8,7 @@ This starter kit makes sending emails at once easier with Google sheets.
 
 [![Release (latest by date)](https://img.shields.io/github/v/release/Kazuki-tam/gas-spreadsheet-mail)](https://github.com/Kazuki-tam/gas-spreadsheet-mail/releases/tag/v0.0.1)
 [![Issues](https://img.shields.io/github/issues/Kazuki-tam/gas-spreadsheet-mail)](https://github.com/Kazuki-tam/gas-spreadsheet-mail/issues)
-![Maintenance](https://img.shields.io/maintenance/yes/2022)
+![Maintenance](https://img.shields.io/maintenance/yes/2023)
 ![Release date](https://img.shields.io/github/release-date/Kazuki-tam/gas-spreadsheet-mail)
 
 ## Features
