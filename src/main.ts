@@ -84,6 +84,8 @@ function main(): GoogleAppsScript.Base.Button | undefined {
         sendEmailToAll(item.address, item.company, item.department, item.pic);
       }
     });
+
+    appUi.alert("📤 Sent email", "It's done!", appUi.ButtonSet.OK);
   } else if (response == "no") {
     appUi.alert("Send canceled!");
   } else {
